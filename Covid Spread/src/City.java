@@ -8,7 +8,7 @@ import java.awt.BasicStroke;
 
 public class City {
 
-	private final int popsize = 100; // population size
+	private final int popsize = 200; // population size
 	private int width, height; // city
 
 	private Person[] population;

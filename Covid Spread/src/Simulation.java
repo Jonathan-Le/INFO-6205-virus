@@ -123,7 +123,7 @@ public class Simulation extends Canvas implements Runnable {
 			}
 
 			if (System.currentTimeMillis() - timer >= 1000) {
-				System.out.println("UPS: " + updates + ", FPS: " + frames);
+			//	System.out.println("UPS: " + updates + ", FPS: " + frames);
 				frames = 0;
 				updates = 0;
 				timer += 1000;
@@ -184,7 +184,7 @@ public class Simulation extends Canvas implements Runnable {
 	 * @param g - tool to draw
 	 */
 	private void drawBackground(Graphics g) {
-		g.setColor(Color.BLACK);
+		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, getWidth(), getHeight());
 	}
 

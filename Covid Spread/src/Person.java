@@ -10,7 +10,7 @@ public class Person {
 	private static final int MIN_SIZE = 10;
 
 
-	private static final float MAX_SPEED = 5.5f;
+	private static final float Rfactor =2.5f;//which estimates the speed at which a disease is capable of spreading in a population
 
 	private int size; // diameter of the circle representing the person
 	private int x, y; // position
@@ -18,9 +18,8 @@ public class Person {
 
 	private float recoveryTime = 14000.0f; // time in milliseconds to recover from first sick
 	private long sickTime = -1l; // store the time the person has been sick
-	private float RFactor = 2.5f;
-	private float Kfactor = 0.10f;// the lower the number is the higher the number of contagious from large
-									// garthing
+
+	private float Kfactor = 0.10f;// the lower the number is the higher the number of contagious from large			// garthing
 	private float MortalityRisk = 0.105f;
 
 	
@@ -45,10 +44,10 @@ public class Person {
 		y = rand.nextInt(h - size);
 
 		while ((int) xVel == 0)
-			xVel = rand.nextFloat() * MAX_SPEED * 2 - MAX_SPEED;
+			xVel = rand.nextFloat() * Rfactor * 2 - Rfactor;
 
 		while ((int) yVel == 0)
-			yVel = rand.nextFloat() * MAX_SPEED * 2 - MAX_SPEED;
+			yVel = rand.nextFloat() * Rfactor * 2 -Rfactor;
 
 	}
 
@@ -134,7 +133,7 @@ public class Person {
 			color = Color.RED;
 			break;
 		case DEATH:
-			color = Color.GRAY;
+			color = Color.BLACK;
 			break;
 		default:
 			color = Color.BLACK;
@@ -167,7 +166,7 @@ public class Person {
 			if (nextMe.intersectsLine(0, yWalls[i], w, yWalls[i]))
 				yVel = -yVel;
 
-		// recovery testing
+		// recovery or death testing
 
 		if (System.currentTimeMillis() - sickTime >= recoveryTime && state == State.SICK && sickTime > 0) {
 			if (Math.random() < MortalityRisk) {
@@ -186,7 +185,7 @@ public class Person {
 	public boolean collided(Person p) {
 		double dist = Math.sqrt(Math.pow(getNextX() - p.getNextX(), 2) + Math.pow(getNextY() - p.getNextY(), 2));
 
-		boolean collided = (dist < size / 2.0 + p.getSize() / 2.0);
+		boolean collided = (dist < size / 2.0 + p.getSize() / 2.0+6);
 
 		if (collided && p.getState() == State.SICK && state == State.HEALTHY)
 			if (Math.random() > Kfactor)
