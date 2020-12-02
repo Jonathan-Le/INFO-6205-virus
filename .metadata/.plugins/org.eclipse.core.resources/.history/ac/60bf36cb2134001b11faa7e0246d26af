@@ -16,12 +16,10 @@ class PersonTest {
 		assertEquals(15, person.getSize(), 6);
 		person.getxVel();
 	}
-	
 
 	@Test
-	public void testCityBasic() {
+	public void testPersonInteraction() {
 		Person person = new Person(1500, 1500);
-		collided(person);
 		person.getSize();
 		assertEquals(15, person.getSize(), 6);
 		person.getxVel();

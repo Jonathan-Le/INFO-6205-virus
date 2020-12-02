@@ -15,7 +15,7 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
 public class Simulation extends Canvas implements Runnable {
-//
+
 	private static final long serialVersionUID = 1L;
 
 	public final static int WIDTH = 1500;

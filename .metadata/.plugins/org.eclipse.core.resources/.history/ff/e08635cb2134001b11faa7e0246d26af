@@ -9,12 +9,7 @@ import java.awt.Stroke;
 
 import java.awt.BasicStroke;
 
-/**
- * @author yiningchen
- *
- */
 public class City {
-
 
 	private final int popsize = 200; // population size
 	private int width, height; // city
@@ -42,51 +37,6 @@ public class City {
 
 		population[0].setSick(); // patient zero
 	}
-	
-	
-	
-
-	public int getPopsize() {
-		return popsize;
-	}
-
-
-
-	public int getWidth() {
-		return width;
-	}
-
-
-
-	public int getHeight() {
-		return height;
-	}
-
-
-
-	public Person[] getPopulation() {
-		return population;
-	}
-
-
-
-	public boolean isIsquarantine() {
-		return isquarantine;
-	}
-
-
-
-	public int[] getxWalls() {
-		return xWalls;
-	}
-
-
-
-	public int[] getyWalls() {
-		return yWalls;
-	}
-	
-	
 
 	/**
 	 * size of the city
