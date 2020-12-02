@@ -46,20 +46,7 @@ public class City {
 	
 	
 
-	public Person[] findPopulation() {
-		return population;
-	}
 
-
-
-
-
-
-
-
-	public int getPopsize() {
-		return popsize;
-	}
 
 
 
@@ -188,7 +175,4 @@ public class City {
 		}
 	}
 
-
-
 }
-

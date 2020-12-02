@@ -46,13 +46,6 @@ public class City {
 	
 	
 
-	public Person[] findPopulation() {
-		return population;
-	}
-
-
-
-
 
 
 

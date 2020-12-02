@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PersonTest" project="Covid Spread" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="CovidSpreadTest.PersonTest" time="0.151" displayname="PersonTest" uniqueid="[engine:junit-jupiter]/[class:CovidSpreadTest.PersonTest]">
+    <testcase name="testBasicPerson" classname="CovidSpreadTest.PersonTest" time="0.0" displayname="testBasicPerson()" uniqueid="[engine:junit-jupiter]/[class:CovidSpreadTest.PersonTest]/[method:testBasicPerson()]"/>
+    <testcase name="testCity" classname="CovidSpreadTest.PersonTest" time="0.151" displayname="testCity()" uniqueid="[engine:junit-jupiter]/[class:CovidSpreadTest.PersonTest]/[method:testCity()]"/>
+  </testsuite>
+</testrun>

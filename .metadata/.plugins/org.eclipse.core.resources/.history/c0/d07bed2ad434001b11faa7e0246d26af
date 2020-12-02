@@ -14,24 +14,9 @@ class PersonTest {
 	public void testBasicPerson() {
 		Person person = new Person(1500, 1500);
 		assertEquals(15, person.getSize(), 6);
+		person.getxVel();
 		assertEquals(0,person.getxVel(), 2.5);
-		assertEquals(0,person.getyVel(), 2.5);
 	}
-	
-	@Test
-	public void testCity() {
-		City city=new City(1500, 1500);
-		assertEquals(200,city.findPopulation().length);
-
-		city.update();
-		
-		
-		
-		
-		
-		
-	}
-		
 	
 
 
