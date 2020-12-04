@@ -34,6 +34,7 @@ class PersonTest {
 		for (int i = 0; i < pop.length; i++)
 			pop[i] = new Person(1500, 1500);
 		pop[0].setSick();
+		assertEquals("SICK",pop[0].getState());
 	}
 		
 	
