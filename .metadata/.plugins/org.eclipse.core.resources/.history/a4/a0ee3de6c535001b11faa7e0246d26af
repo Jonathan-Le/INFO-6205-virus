@@ -3,8 +3,6 @@ package CovidSpreadTest;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
 import CovidSpreadSimulation.City;
@@ -24,19 +22,17 @@ class PersonTest {
 	public void testCity() {
 		City city=new City(1500, 1500);
 		assertEquals(200,city.findPopulation().length);
-	}
-		
-	
-	@Test
-	public void testpopulation() {
-        Person[] pop = new Person[200];
 
-		for (int i = 0; i < pop.length; i++)
-			pop[i] = new Person(1500, 1500);
-		pop[0].setSick();
-		assertEquals("SICK",pop[0].getState());
+		city.update();
+		
+		
+		
+		
+		
+		
 	}
 		
 	
+
 
 }
