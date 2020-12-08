@@ -16,7 +16,7 @@ public class Person {
 	private static final float Rfactor =2.5f;//which estimates the speed at which a disease is capable of spreading in a population
 
 	private int size; // diameter of the circle representing the person
-	private int x, y; // position
+	public int x, y; // position
 	private float xVel = 0, yVel = 0; // velocity components
 
 	private float recoveryTime = 14000.0f; // time in milliseconds to recover from first sick
@@ -26,7 +26,7 @@ public class Person {
 	private float MortalityRisk = 0.105f;
 
 	
-	private enum State {
+	public enum State {
 		HEALTHY, RECOVERED, SICK, DEATH
 	}
 
@@ -166,8 +166,10 @@ public class Person {
 				xVel = -xVel;
 
 		for (int i = 0; i < yWalls.length; i++)
-			if (nextMe.intersectsLine(0, yWalls[i], w, yWalls[i]))
+			if (nextMe.intersectsLine(0, yWalls[i], w, yWalls[i])){
+				System.out.println(0+"||"+yWalls[i]+"||"+ w+"||"+ yWalls[i]);
 				yVel = -yVel;
+			}
 
 		// recovery or death testing
 

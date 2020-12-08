@@ -127,7 +127,7 @@ public class Simulation extends Canvas implements Runnable {
 			}
 
 			if (System.currentTimeMillis() - timer >= 1000) {
-			//	System.out.println("UPS: " + updates + ", FPS: " + frames);
+//				System.out.println("UPS: " + updates + ", FPS: " + frames);
 				frames = 0;
 				updates = 0;
 				timer += 1000;
