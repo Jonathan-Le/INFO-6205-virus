@@ -14,9 +14,9 @@ public class City {
 	private final int popsize = 200; // population size
 	private int width, height; // city
 
-	private Person[] population;
+	public Person[] population;
 
-	private boolean isquarantine = false;
+	public boolean isquarantine = false;
 	private int[] xWalls; // boundaries
 	private int[] yWalls;
 
@@ -57,7 +57,7 @@ public class City {
 	 */
 	private void setWalls(int w, int h) {
 
-		if (isquarantine) {
+		if (isQuarantine()) {
 			xWalls = new int[6];
 			xWalls[0] = 0;
 			xWalls[1] = w / 5;
@@ -95,6 +95,45 @@ public class City {
 			population[i].draw(g);
 
 	}
+	public boolean isQuarantine() {
+		return isquarantine;
+	}
+	public int getPopsize() {
+		return popsize;
+	}
+
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int[] getxWalls() {
+		return xWalls;
+	}
+
+	public void setxWalls(int[] xWalls) {
+		this.xWalls = xWalls;
+	}
+
+	public int[] getyWalls() {
+		return yWalls;
+	}
+
+	public void setyWalls(int[] yWalls) {
+		this.yWalls = yWalls;
+	}
 
 	/**
 	 * Draw all the walls
@@ -121,9 +160,10 @@ public class City {
 	 * update every single person (movement and collisions)
 	 */
 	public void update() {
+//		System.out.println("X:"+population[0].getX()+"\n"+"Y:"+population[0].getY());
+//		System.out.println("xVel:"+population[0].getxVel()+"\n"+"yVel:"+population[0].getyVel());
 		for (int i = 0; i < population.length; i++) {
 			population[i].update(xWalls, yWalls, width, height);
-
 			for (int j = 0; j < population.length; j++)
 				if (i != j) {
 					Person p1 = population[i];
