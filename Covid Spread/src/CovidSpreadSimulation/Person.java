@@ -1,9 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package CovidSpreadSimulation;
 
+/**
+ *
+ * @author junyaoli
+ */
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+
+import java.awt.*;
 import java.util.Random;
 
 public class Person {
@@ -13,8 +21,9 @@ public class Person {
 	private static final int MIN_SIZE = 10;
 
 
-	private static final float Rfactor =2.5f;//which estimates the speed at which a disease is capable of spreading in a population
-
+	public   static float Rfactor =2.5f;//which estimates the speed at which a disease is capable of spreading in a population
+        public   static float  Kfactor = 0.10f;// the lower the number is the higher the number of contagious from large			// garthing
+            
 	private int size; // diameter of the circle representing the person
 	public int x, y; // position
 	private float xVel = 0, yVel = 0; // velocity components
@@ -22,7 +31,6 @@ public class Person {
 	private float recoveryTime = 14000.0f; // time in milliseconds to recover from first sick
 	private long sickTime = -1l; // store the time the person has been sick
 
-	private float Kfactor = 0.10f;// the lower the number is the higher the number of contagious from large			// garthing
 	private float MortalityRisk = 0.105f;
 
 	
@@ -167,7 +175,7 @@ public class Person {
 
 		for (int i = 0; i < yWalls.length; i++)
 			if (nextMe.intersectsLine(0, yWalls[i], w, yWalls[i])){
-				System.out.println(0+"||"+yWalls[i]+"||"+ w+"||"+ yWalls[i]);
+				//System.out.println(0+"||"+yWalls[i]+"||"+ w+"||"+ yWalls[i]);
 				yVel = -yVel;
 			}
 
@@ -200,3 +208,4 @@ public class Person {
 	}
 
 }
+

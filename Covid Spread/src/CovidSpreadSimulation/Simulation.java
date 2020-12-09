@@ -1,27 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package CovidSpreadSimulation;
 
+/**
+ *
+ * @author junyaoli
+ */
 
-
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 
-import javax.swing.JFrame;
-
 public class Simulation extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 
-	public final static int WIDTH = 1500;
-	public final static int HEIGHT = 1500;
+	public final static int WIDTH = 1000;
+	public final static int HEIGHT = 710;
 
 	public boolean running = false;
+        public boolean Isuqrantinr = true;
 	private Thread thread;
 
 	City city;
@@ -29,10 +34,12 @@ public class Simulation extends Canvas implements Runnable {
 	/**
 	 * Constructor
 	 */
-	public Simulation() {
+	public Simulation(boolean isquarantine) {
+                Isuqrantinr=isquarantine;
 		canvasSetup();
-		initialize();
-		newWindow();
+		initialize(Isuqrantinr);
+               // System.out.println(city.isQuarantine());
+                start();
 
 	}
 
@@ -55,9 +62,9 @@ public class Simulation extends Canvas implements Runnable {
 	/**
 	 * initialize all our game objects
 	 */
-	private void initialize() {
+	private void initialize(Boolean quarantine) {
 
-		city = new City(getWidth(), getHeight());
+		city = new City(getWidth(), getHeight(),quarantine);
 	}
 
 	/**
@@ -73,7 +80,7 @@ public class Simulation extends Canvas implements Runnable {
 				int code = e.getKeyCode();
 
 				if (code == KeyEvent.VK_R)
-					initialize();
+					initialize(Isuqrantinr);
 
 			}
 
@@ -83,7 +90,7 @@ public class Simulation extends Canvas implements Runnable {
 		this.addComponentListener(new ComponentAdapter() {
 			public void componentResized(ComponentEvent componentEvent) {
 //				city.setSize(getWidth(), getHeight());
-				initialize();
+				initialize(Isuqrantinr);
 			}
 		});
 
@@ -166,7 +173,6 @@ public class Simulation extends Canvas implements Runnable {
 		BufferStrategy buffer = this.getBufferStrategy();
 		if (buffer == null) {
 			this.createBufferStrategy(3);
-
 			return;
 		}
 
@@ -207,8 +213,9 @@ public class Simulation extends Canvas implements Runnable {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		new Simulation();
-	}
+//	public static void main(String[] args) {
+//		new Simulation();
+//	}
 
 }
+

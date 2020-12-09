@@ -1,22 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package CovidSpreadSimulation;
 
+/**
+ *
+ * @author junyaoli
+ */
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Stroke;
 
-import java.awt.BasicStroke;
+import java.awt.*;
 
 public class City {
 
-	private final int popsize = 200; // population size
+	public static int popsize = 200; // population size
 	private int width, height; // city
 
 	public Person[] population;
 
-	public boolean isquarantine = false;
+	public boolean isquarantine = true;
 	private int[] xWalls; // boundaries
 	private int[] yWalls;
 
@@ -26,10 +30,21 @@ public class City {
 	 * @param w - width of the city
 	 * @param h - height of the city
 	 */
+	public City(int w, int h, boolean quarantine) {
+                isquarantine=quarantine;
+		setSize(w, h);
+		setWalls(w, h);
+		population = new Person[popsize];
+
+		for (int i = 0; i < population.length; i++)
+			population[i] = new Person(w, h);
+
+		population[0].setSick(); // patient zero
+
+	}
 	public City(int w, int h) {
 		setSize(w, h);
 		setWalls(w, h);
-
 		population = new Person[popsize];
 
 		for (int i = 0; i < population.length; i++)
@@ -60,14 +75,14 @@ public class City {
 		if (isQuarantine()) {
 			xWalls = new int[6];
 			xWalls[0] = 0;
-			xWalls[1] = w / 5;
-			xWalls[2] = w / 2;
+			xWalls[1] = w / 3;
+			xWalls[2] = w / 7;
 			xWalls[3] = w;
 
 			yWalls = new int[6];
 			yWalls[0] = 0;
-			yWalls[1] = h / 5;
-			yWalls[2] = h / 2;
+			yWalls[1] = h / 3;
+			yWalls[2] = h / 7;
 			yWalls[3] = h;
 
 		} else {
@@ -192,3 +207,4 @@ public class City {
 	}
 
 }
+
