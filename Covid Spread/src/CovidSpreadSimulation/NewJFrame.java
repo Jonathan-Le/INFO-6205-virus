@@ -29,10 +29,7 @@ public class NewJFrame extends JFrame {
     Simulation simulation=null;
     public NewJFrame() {
         initComponents();
-//       Simulation simulation =new Simulation();
-//	jPanel2.add(simulation);
         combobox();
-        XYSeries series = new XYSeries("HealthyPopulation");
     }
 
     /**
@@ -207,27 +204,15 @@ public class NewJFrame extends JFrame {
         int popsize=200;
         float kfactor=0.10f,rfactor=5f,motality=0.05f;
 
+        if (!visrusjComboBox.getSelectedItem().equals("Covid-19")){ kfactor=0.50f;rfactor=2.5f;motality=0.1f;}
+        if (socialdistancingjComboBox.getSelectedItem().equals("Yes")){kfactor+=0.3f;}
 
-        if (!visrusjComboBox.getSelectedItem().equals("Covid-19")){
-             kfactor=0.50f;rfactor=2.5f;motality=0.1f;//
-        }
+        if (maskjComboBox.getSelectedItem().equals("Prevalant")){kfactor+=0.5f; }
 
-         if (socialdistancingjComboBox.getSelectedItem().equals("Yes")){
-              kfactor+=0.3f;
-         }
+        if (quarantinejComboBox.getSelectedItem().equals("Yes")){ quearantine = true;
+        }else quearantine = false;
 
-
-          if (maskjComboBox.getSelectedItem().equals("Prevalant")){
-             kfactor+=0.5f;
-         }
-
-          if (quarantinejComboBox.getSelectedItem().equals("Yes")){
-              quearantine = true;
-         }else
-              quearantine = false;
-
-        if (!populationjTextField.getText().equals(""))
-              popsize = Integer.parseInt(populationjTextField.getText());
+        if (!populationjTextField.getText().equals("")) popsize = Integer.parseInt(populationjTextField.getText());
 
         //double population_density = Double.parseDouble(populationjTextField.getText());
 
@@ -244,7 +229,6 @@ public class NewJFrame extends JFrame {
             jPanel2.add(simulation);
             count++;
             jButton1.setText("Stop");
-
         }else{
 //            simulation.stop();
 //            simulation=null;
