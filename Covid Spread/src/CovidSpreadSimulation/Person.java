@@ -31,7 +31,7 @@ public class Person {
 	private float recoveryTime = 14000.0f; // time in milliseconds to recover from first sick
 	private long sickTime = -1l; // store the time the person has been sick
 
-	private float MortalityRisk = 0.105f;
+	public static float MortalityRisk = 0.105f;
 
 	
 	public enum State {

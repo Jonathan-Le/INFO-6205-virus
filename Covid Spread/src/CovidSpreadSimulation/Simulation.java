@@ -25,8 +25,13 @@ public class Simulation extends Canvas implements Runnable {
 	public final static int WIDTH = 1000;
 	public final static int HEIGHT = 710;
 
+	public int HealthyPopulation=0;
+	public int SickPopulation=0;
+	public int RecoveredPopulation=0;
+	public int DiedPopulation=0;
+
 	public boolean running = false;
-        public boolean Isuqrantinr = true;
+	public boolean Isuqrantinr = true;
 	private Thread thread;
 
 	City city;
@@ -35,28 +40,12 @@ public class Simulation extends Canvas implements Runnable {
 	 * Constructor
 	 */
 	public Simulation(boolean isquarantine) {
-                Isuqrantinr=isquarantine;
+		Isuqrantinr=isquarantine;
 		canvasSetup();
 		initialize(Isuqrantinr);
-               // System.out.println(city.isQuarantine());
-                start();
+        // System.out.println(city.isQuarantine());
+        start();
 
-	}
-
-	/**
-	 * Setup JFrame where the canvas will be in
-	 */
-	private void newWindow() {
-		JFrame frame = new JFrame("Covid Spread Simulator");
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(true);
-		frame.add(this);
-		frame.pack();
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-
-		start();
 	}
 
 	/**
@@ -202,8 +191,17 @@ public class Simulation extends Canvas implements Runnable {
 	 * update settings and move all objects
 	 */
 	public void update() {
-
+		HealthyPopulation=0;RecoveredPopulation=0;SickPopulation=0;DiedPopulation=0;
+		for(Person person:city.population){
+			if (person.getState().equals(Person.State.HEALTHY)) HealthyPopulation++;
+			if (person.getState().equals(Person.State.RECOVERED)) RecoveredPopulation++;
+			if (person.getState().equals(Person.State.SICK)) SickPopulation++;
+			if (person.getState().equals(Person.State.DEATH)) DiedPopulation++;
+		}
+		System.out.println("HealthyPopulation="+HealthyPopulation+" "+"SickPopulation="+SickPopulation+" "
+							+"RecoveredPopulation="+RecoveredPopulation+" "+"DiedPopulation="+DiedPopulation+" ");
 		city.update();
+
 
 	}
 

@@ -77,7 +77,7 @@ public class City {
 			xWalls[0] = 0;
 			xWalls[1] = w / 3;
 			xWalls[2] = w / 7;
-			xWalls[3] = w;
+			xWalls[3] = w ;
 
 			yWalls = new int[6];
 			yWalls[0] = 0;
