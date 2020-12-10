@@ -5,23 +5,34 @@
  */
 package CovidSpreadSimulation;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+
 import javax.swing.*;
+import java.awt.*;
 
 /**
  *
  * @author junyaoli
  */
-public class MainJFrame extends JFrame {
+public class NewJFrame extends JFrame {
 
     /**
      * Creates new form NewJFrame
      */
     int count=0;
-    public MainJFrame() {
+    Simulation simulation=null;
+    public NewJFrame() {
         initComponents();
-//        Simulation simulation =new Simulation();
+//       Simulation simulation =new Simulation();
 //	jPanel2.add(simulation);
         combobox();
+        XYSeries series = new XYSeries("HealthyPopulation");
     }
 
     /**
@@ -33,7 +44,7 @@ public class MainJFrame extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new JPanel();
         jButton1 = new javax.swing.JButton();
         visrusjComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -46,12 +57,14 @@ public class MainJFrame extends JFrame {
         jLabel8 = new javax.swing.JLabel();
         populationjTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jPanel2 = new JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 800));
+        setPreferredSize(new Dimension(1000, 800));
 
-        jButton1.setText("Run/Stop");
+        jButton1.setText("Run");
+        jButton1.setAlignmentX(1.0F);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -59,25 +72,41 @@ public class MainJFrame extends JFrame {
         });
 
         visrusjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        visrusjComboBox.setAlignmentX(1.0F);
 
         jLabel3.setText("Virus");
+        jLabel3.setAlignmentX(1.0F);
 
         jLabel4.setText("Quarantine");
+        jLabel4.setAlignmentX(1.0F);
 
         quarantinejComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        quarantinejComboBox.setAlignmentX(1.0F);
 
         socialdistancingjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        socialdistancingjComboBox.setAlignmentX(1.0F);
 
         jLabel5.setText("Social distancing ");
+        jLabel5.setAlignmentX(1.0F);
 
         maskjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        maskjComboBox.setAlignmentX(1.0F);
 
         jLabel6.setText("Mask");
+        jLabel6.setAlignmentX(1.0F);
 
         jLabel8.setText("Population density");
 
         jLabel9.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
         jLabel9.setText("Default value: 200");
+
+        jButton2.setText("Graphics");
+        jButton2.setAlignmentX(1.0F);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,32 +115,32 @@ public class MainJFrame extends JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(populationjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(visrusjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(quarantinejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(socialdistancingjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(maskjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(populationjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(visrusjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(quarantinejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(socialdistancingjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(maskjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {maskjComboBox, quarantinejComboBox, socialdistancingjComboBox, visrusjComboBox});
@@ -131,11 +160,12 @@ public class MainJFrame extends JFrame {
                     .addComponent(visrusjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(populationjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)))
+                    .addComponent(jLabel8)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel9)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -146,7 +176,7 @@ public class MainJFrame extends JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGap(0, 352, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,52 +205,104 @@ public class MainJFrame extends JFrame {
         // TODO add your handling code here:
         boolean quearantine;
         int popsize=200;
-        float kfactor=0.10f,rfactor=5f;
-        
-        
+        float kfactor=0.10f,rfactor=5f,motality=0.05f;
+
+
         if (!visrusjComboBox.getSelectedItem().equals("Covid-19")){
-             kfactor=0.50f;rfactor=2.5f;//
+             kfactor=0.50f;rfactor=2.5f;motality=0.1f;//
         }
-        
+
          if (socialdistancingjComboBox.getSelectedItem().equals("Yes")){
               kfactor+=0.3f;
-         } 
-             
-             
+         }
+
+
           if (maskjComboBox.getSelectedItem().equals("Prevalant")){
              kfactor+=0.5f;
          }
-          
+
           if (quarantinejComboBox.getSelectedItem().equals("Yes")){
               quearantine = true;
-         }else 
+         }else
               quearantine = false;
-              
+
         if (!populationjTextField.getText().equals(""))
               popsize = Integer.parseInt(populationjTextField.getText());
-        
+
         //double population_density = Double.parseDouble(populationjTextField.getText());
-        
-        Simulation simulation=null;
-        
+
+        //Simulation simulation=null;
+
         if (count==0) {
             Person.Kfactor=kfactor;
             Person.Rfactor=rfactor;
+            Person.MortalityRisk=motality;
             City.popsize=popsize;
             System.out.println("kfactor"+kfactor);
             System.out.println("rfactor"+rfactor);
             simulation =new Simulation(quearantine);
             jPanel2.add(simulation);
             count++;
-        
+            jButton1.setText("Stop");
+
         }else{
 //            simulation.stop();
 //            simulation=null;
             jPanel2.removeAll();
             count--;
+            jButton1.setText("Run");
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JFrame graphic = new JFrame();
+
+        graphic.setLocationRelativeTo(null);
+        graphic.setTitle("Population Graphic");
+        graphic.setSize(new Dimension(600,400));graphic.setVisible(true);
+        graphic.setLayout(new BorderLayout());
+        graphic.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        XYSeries series1 =new XYSeries("Healthy Population");
+        XYSeries series2 =new XYSeries("Sick Population");
+        XYSeries series3 =new XYSeries("Recovered Population");
+        XYSeries series4 =new XYSeries("Died Population");
+
+        XYSeriesCollection dataset1 = new XYSeriesCollection(series1);
+        dataset1.addSeries(series2);
+        dataset1.addSeries(series3);
+        dataset1.addSeries(series4);
+        JFreeChart chart = ChartFactory.createXYLineChart("Population Graphics", "Time", "Population", dataset1);
+        //set color
+        XYPlot plot = chart.getXYPlot();
+        XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) plot.getRenderer();
+        renderer.setSeriesPaint(0, Color.GREEN);
+        renderer.setSeriesPaint(1, Color.RED);
+        renderer.setSeriesPaint(2, Color.BLUE);
+        renderer.setSeriesPaint(3, Color.BLACK);
+
+        graphic.add(new ChartPanel(chart),BorderLayout.CENTER);
+
+        Thread thread1 =new Thread(){
+            @Override public void run(){
+                long  t=0;
+                int s=0;
+                while(true){
+                    t++;
+                    if (t>900000000) {
+                        series1.add(s++, simulation.HealthyPopulation);
+                        series2.add(s++, simulation.SickPopulation);
+                        series3.add(s++, simulation.RecoveredPopulation);
+                        series4.add(s++, simulation.DiedPopulation);
+                        t=0;
+                    }
+                }
+            }
+        };
+        thread1.start();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,7 +311,7 @@ public class MainJFrame extends JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -239,20 +321,20 @@ public class MainJFrame extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                new NewJFrame().setVisible(true);
             }
         });
     }
@@ -272,14 +354,15 @@ void combobox(){
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private JPanel jPanel1;
+    private JPanel jPanel2;
     private javax.swing.JComboBox<String> maskjComboBox;
     private javax.swing.JTextField populationjTextField;
     private javax.swing.JComboBox<String> quarantinejComboBox;
