@@ -25,3 +25,10 @@ hs_err_pid*
 
 *.iml
 **/*.iml
+Covid Spread/.DS_Store
+Covid Spread/bin/.DS_Store
+Covid Spread/src/.DS_Store
+Covid Spread/src/.DS_Store
+Covid Spread/.DS_Store
+.DS_Store
+*.iml
