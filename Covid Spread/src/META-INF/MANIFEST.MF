@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: CovidSpreadSimulation.NewJFrame
-Class-Path: jfreechart-1.5.1.jar junit-jupiter-5.4.2.jar junit-jupiter-a
- pi-5.4.2.jar apiguardian-api-1.0.0.jar opentest4j-1.1.1.jar junit-platf
- orm-commons-1.4.2.jar junit-jupiter-params-5.4.2.jar junit-jupiter-engi
- ne-5.4.2.jar junit-platform-engine-1.4.2.jar junit-4.12.jar hamcrest-co
- re-1.3.jar
-
