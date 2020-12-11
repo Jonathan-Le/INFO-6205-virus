@@ -32,3 +32,5 @@ Covid Spread/src/.DS_Store
 Covid Spread/.DS_Store
 .DS_Store
 *.iml
+/target/
+.idea/
